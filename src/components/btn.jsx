@@ -4,17 +4,14 @@ import React from 'react'
 const Btn = ({ btnType, btnTxt, btnClick }) => {
     let txt = ''
     switch(btnTxt) {
-        case '+':
-            txt = ' + '
-            break
         case '–':
-            txt = ' - '
+            txt = '-'
             break
         case '×':
-            txt = ' * '
+            txt = '*'
             break
         case '÷':
-            txt = ' : '
+            txt = ':'
             break
         default:
             txt = btnTxt
