@@ -1,0 +1,121 @@
+@font-face {
+  font-family: "lcd phone";
+  font-style: normal;
+  font-weight: normal;
+  src: local("lcd phone"), url("./font/LCDPHONE.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Source Sans Pro", sans-serif;
+  background: #eee;
+}
+
+.calculator {
+  width: 500px;
+  height: 630px;
+  padding: 20px;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.calculator table {
+  width: 100%;
+}
+
+.input div {
+  border: 1px solid #bbb;
+  border-radius: 1px;
+  padding: 30px 20px 20px 20px;
+  font-family: "lcd phone", arial;
+  text-align: right;
+  font-size: 4rem;
+  overflow-x: auto;
+  background: #ccc;
+  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.buttons td {
+  width: 25%;
+}
+
+.buttons td div {
+  font-size: 2rem;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px;
+}
+.buttons td div:active {
+  transform: translateY(1px);
+}
+
+.operators div {
+  font-weight: bold;
+  border: 1px solid #bbb;
+  background: #ddd;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+.operators div:hover {
+  background: #ddd;
+  border-color: #aaa;
+}
+.operators div:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.numbers div {
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+.numbers div:hover {
+  background: #f1f1f1;
+  border-color: #bbb;
+}
+.numbers div:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.func div {
+  font-weight: bold;
+  border: 1px solid rgb(209, 56, 0);
+  background: rgb(255, 87, 26);
+  color: #fff;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.8);
+}
+.func div:hover {
+  background: orangered;
+  border-color: rgb(173, 46, 0);
+}
+.func div:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.equal div {
+  font-weight: bold;
+  border: 1px solid #3079ed;
+  background: #4d90fe;
+  height: 120px;
+  color: #fff;
+  line-height: 120px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.8);
+}
+.equal div:hover {
+  background: #307cf9;
+  border-color: #1857bb;
+}
+.equal div:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+}
