@@ -21,6 +21,8 @@ function App() {
         switch(txt) {
             case 'C':
                 setInput('0')
+                setPrevRes('0')
+                setPrevOper(undefined)
                 break
             case '◄':
                 input.length > 1 ? setInput(input.slice(0, input.length - 1)) : setInput('0')
@@ -65,22 +67,34 @@ function App() {
             setPrevRes(input)
         }
         else {
+            let res = ''
             switch(prevOper) {
                 case '+':
-                    setInput(Number(prevRes) + Number(input))
+                    res = String(Number(prevRes) + Number(input))
                     break
                 case '-':
-                    setInput(Number(prevRes) - Number(input))
+                    res = String(Number(prevRes) - Number(input))
                     break
                 case '*':
-                    setInput(Number(prevRes) * Number(input))
+                    res = String(Number(prevRes) * Number(input))
                     break
                 case ':':
-                    input !== '0' && setInput(Number(prevRes) / Number(input))
+                    res = input !== '0' && String(Number(prevRes) / Number(input))
                     break
                 default:
                     setInput(input)
             }
+            
+            console.log(res)
+            if(res.length > 8) {
+                if(res.includes('.')) {
+                    res = res.slice(0, 9)
+                }
+                else {
+                    res = (res / (10 ** (res.length - 1))).toFixed(2) + ` E${res.length - 1}`
+                }
+            }
+            setInput(res)
             setPrevOper(operation)
         }
         setInputing(false)
