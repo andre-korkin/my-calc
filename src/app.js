@@ -50,7 +50,12 @@ function App() {
             txt !== '0' && txt !== '.' && txt !== '00' && setInput(txt)
         }
         else {
-            input.length < 8 && setInput(input + txt)
+            if(txt === '.') {
+                !input.includes('.') && input.length < 7 && setInput(input + txt)
+            }
+            else {
+                input.length < 8 && setInput(input + txt)
+            }
         }
     }
 

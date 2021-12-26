@@ -28,6 +28,7 @@ body {
   border-radius: 5px;
   background: #fff;
   box-sizing: border-box;
+  user-select: none;
 }
 
 .calculator table {
