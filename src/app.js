@@ -31,16 +31,16 @@ function App() {
                 getResult('=')
                 break
             case '+':
-                getResult('+')
+                inputing ? getResult('+') : setPrevOper('+')
                 break
             case '-':
-                getResult('-')
+                inputing ? getResult('-') : setPrevOper('-')
                 break
             case '*':
-                getResult('*')
+                inputing ? getResult('*') : setPrevOper('*')
                 break
             case ':':
-                getResult(':')
+                inputing ? getResult(':') : setPrevOper(':')
                 break
             default:
                 inputing ? validInput(txt) : resetInput(txt)
@@ -85,7 +85,6 @@ function App() {
                     setInput(input)
             }
             
-            console.log(res)
             if(res.length > 8) {
                 if(res.includes('.')) {
                     res = res.slice(0, 9)
