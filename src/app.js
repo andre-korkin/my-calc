@@ -49,7 +49,12 @@ function App() {
 
     function validInput(txt) {
         if(input === '0') {
-            txt !== '0' && txt !== '.' && txt !== '00' && setInput(txt)
+            if(txt === '.') {
+                setInput('0.')
+            }
+            else {
+                txt !== '00' && setInput(txt)
+            }
         }
         else {
             if(txt === '.') {
@@ -101,7 +106,16 @@ function App() {
 
     function resetInput(txt) {
         setPrevRes(input)
-        setInput(txt)
+        switch(txt) {
+            case '.':
+                setInput('0.')
+                break
+            case '00':
+                setInput('0')
+                break
+            default:
+                setInput(txt)
+        }
         setInputing(true)
     }
 }
