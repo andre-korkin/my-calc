@@ -4,10 +4,10 @@ import Buttons from './components/buttons'
 
 
 function App() {
-    const [prevRes, setPrevRes] = useState('0')
-    const [prevOper, setPrevOper] = useState(undefined)
-    const [input, setInput] = useState('0')
-    const [inputing, setInputing] = useState(true)
+    const [prevRes, setPrevRes] = useState('0')  // предыдущее число или последний результат
+    const [prevOper, setPrevOper] = useState(undefined)  // предыдущая операция
+    const [input, setInput] = useState('0')  // текущее число
+    const [inputing, setInputing] = useState(true)  // флаг, использующийся для понимания, что происходит в калькуляторе: число/операция
     
     return (
         <div className='calculator'>
@@ -17,7 +17,7 @@ function App() {
     )
 
 
-    function handleClick(txt) {
+    function handleClick(txt) {  // в зависимости от того, какая нажата кнопка, реализуются разные сценарии
         switch(txt) {
             case 'C':
                 setInput('0')
@@ -28,7 +28,7 @@ function App() {
                 input.length > 1 ? setInput(input.slice(0, input.length - 1)) : setInput('0')
                 break
             case '=':
-                getResult('=')
+                inputing ? getResult('=') : setPrevOper('=')
                 break
             case '+':
                 inputing ? getResult('+') : setPrevOper('+')
@@ -47,7 +47,7 @@ function App() {
         }
     }
 
-    function validInput(txt) {
+    function validInput(txt) {  // проверка на валидность ввода цифровой информации
         if(input === '0') {
             if(txt === '.') {
                 setInput('0.')
@@ -66,8 +66,8 @@ function App() {
         }
     }
 
-    function getResult(operation) {
-        if(prevOper === undefined) {
+    function getResult(operation) {  // получение результата
+        if(prevOper === undefined) {  // если только начинаем пользоваться калькулятором, нет предыдущих операций
             setPrevOper(operation)
             setPrevRes(input)
         }
@@ -84,13 +84,15 @@ function App() {
                     res = String(Number(prevRes) * Number(input))
                     break
                 case ':':
-                    res = input !== '0' && String(Number(prevRes) / Number(input))
+                    res = input !== '0' ? String(Number(prevRes) / Number(input)) : '0'  // деления на 0 не происходит / res => 0
                     break
                 default:
                     setInput(input)
+                    setPrevOper(undefined)
+                    res = input
             }
             
-            if(res.length > 8) {
+            if(res.length > 8) {  // отработка проблемы длинного числа
                 if(res.includes('.')) {
                     res = res.slice(0, 9)
                 }
@@ -104,7 +106,7 @@ function App() {
         setInputing(false)
     }
 
-    function resetInput(txt) {
+    function resetInput(txt) {  // подготовка к вводу нового числа после выбора операции
         setPrevRes(input)
         switch(txt) {
             case '.':
